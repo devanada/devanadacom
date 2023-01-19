@@ -11,26 +11,37 @@ import { ProfileType, ProjectType } from "utils/types";
 interface Props {
   projects: ProjectType[];
   profile: ProfileType;
+  date: Date;
 }
 
 export async function getServerSideProps() {
-  const response = await axios.get(
-    "https://api.github.com/users/devanada/starred?sort=updated"
-  );
-  const response2 = await axios.get("https://api.github.com/users/devanada");
-  const data = response.data.slice(0, 3);
-  const { data: profile } = response2;
+  let datas: ProjectType[] = [];
+  let datas2: ProfileType | any = {};
+  try {
+    const response = await axios.get(
+      "https://api.github.com/users/devanada/starred?sort=updated"
+    );
+    const response2 = await axios.get("https://api.github.com/users/devanada");
+    const data = response.data.slice(0, 3);
+    const { data: profile } = response2;
+    datas = data;
+    datas2 = profile;
+  } catch (err) {
+    console.log(err);
+  }
+
   return {
     props: {
-      projects: data,
-      profile,
+      projects: datas,
+      profile: datas2,
+      date: Date.now(),
     },
   };
 }
 
-const Home: NextPage<Props> = ({ projects, profile }) => {
+const Home: NextPage<Props> = ({ projects, profile, date }) => {
   return (
-    <Layout>
+    <Layout date={date}>
       <AboutMe {...profile} />
       <MyProject projects={projects} />
       <ContactMe />

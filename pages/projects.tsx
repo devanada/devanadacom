@@ -9,23 +9,36 @@ import { ProjectType } from "utils/types";
 
 interface Props {
   projects: ProjectType[];
+  date: Date;
 }
 
 export async function getServerSideProps() {
-  const response = await axios.get(
-    "https://api.github.com/users/devanada/starred?sort=updated"
-  );
-  const { data } = response;
+  let datas: ProjectType[] = [];
+  try {
+    const response = await axios.get(
+      "https://api.github.com/users/devanada/starred?sort=updated"
+    );
+    const { data } = response;
+    datas = data;
+  } catch (err) {
+    console.log(err);
+  }
+
   return {
     props: {
-      projects: data,
+      projects: datas,
+      date: Date.now(),
     },
   };
 }
 
-const projects: NextPage<Props> = ({ projects }) => {
+const projects: NextPage<Props> = ({ projects, date }) => {
   return (
-    <Layout docTitle="Projects | Devanada's Personal Website">
+    <Layout
+      docTitle="Projects | Devanada's Personal Website"
+      docDesc="List of Devanada's project"
+      date={date}
+    >
       {projects.map((project) => (
         <ListView key={project.id} {...project} />
       ))}

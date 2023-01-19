@@ -6,18 +6,21 @@ import Head from "next/head";
 interface Props {
   children: ReactNode;
   docTitle?: string;
+  docDesc?: string;
+  date: Date;
 }
 
 const Layout: FC<Props> = ({
   docTitle = "Devanada's Personal Website",
+  docDesc = "The front page of the Internet",
   children,
+  date,
 }) => {
-  const currentDate = new Date();
-
   return (
     <>
       <Head>
         <title>{docTitle}</title>
+        <meta name="description" content={docDesc} />
         <link
           rel="apple-touch-icon"
           sizes="57x57"
@@ -92,13 +95,14 @@ const Layout: FC<Props> = ({
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-      <header className="container sticky top-0 left-0 right-0 m-auto flex min-h-[4rem] items-center justify-between border-b border-b-dark-2 bg-dark p-3">
-        <Link href="/">
+      <header className="container sticky top-0 left-0 right-0 m-auto flex min-h-[4rem] items-center justify-between border-b border-b-dark-2 bg-dark p-2">
+        <Link className="relative h-full w-full" href="/">
           <Image
             src="https://avatars.githubusercontent.com/u/53251131?v=4"
             alt="Logo"
             fill
-            className="!relative max-w-[3rem] rounded-full object-contain"
+            sizes="100px"
+            className="max-w-[3rem] rounded-full object-contain"
           />
         </Link>
         <div className="text-white">
@@ -113,7 +117,7 @@ const Layout: FC<Props> = ({
       <main className="container m-auto my-6 flex-1 px-5">{children}</main>
       <footer className="container m-auto flex min-h-[6rem] flex-col items-center justify-center border-t border-t-dark-2 bg-dark text-white">
         <p className="flex items-center justify-center gap-2">
-          © {currentDate.getFullYear()} Yoga S Devanada
+          © {new Date(date).getFullYear().toString()} Yoga S Devanada
         </p>
         <p className="flex items-center justify-center gap-2">
           Hosted at

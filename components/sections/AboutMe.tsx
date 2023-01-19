@@ -3,7 +3,10 @@ import type { NextPage } from "next";
 
 import { ProfileType } from "utils/types";
 
-const AboutMe: NextPage<ProfileType> = ({ avatar_url, name }) => {
+const AboutMe: NextPage<ProfileType> = ({
+  avatar_url = "https://avatars.githubusercontent.com/u/53251131?v=4",
+  name = "No Image",
+}) => {
   return (
     <section className="mb-11 flex flex-col items-center gap-6 text-white md:flex-row">
       <div className="flex flex-col items-center justify-center gap-3">

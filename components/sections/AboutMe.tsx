@@ -10,13 +10,15 @@ const AboutMe: NextPage<ProfileType> = ({
   return (
     <section className="mb-11 flex flex-col items-center gap-6 text-white md:flex-row">
       <div className="flex flex-col items-center justify-center gap-3">
-        <Image
-          className="rounded-full object-contain"
-          src={avatar_url}
-          alt={name}
-          width="200"
-          height="200"
-        />
+        <div className="aspect-w-2 aspect-h-2 relative h-full w-full">
+          <Image
+            className="rounded-full object-contain"
+            src={avatar_url}
+            alt={name}
+            fill
+            sizes="100vw"
+          />
+        </div>
         <p className="text-center text-3xl">{name}</p>
       </div>
       <div className="w-full lg:w-1/2">

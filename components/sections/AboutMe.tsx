@@ -23,7 +23,7 @@ const AboutMe: NextPage<ProfileType> = ({
       </div>
       <div className="w-full lg:w-1/2">
         <p className="text-justify">
-          Hello, my name is Yoga Swami Devanada, interested in Technology,
+          Hello my name is Yoga Swami Devanada, interested in Technology,
           especially computers. Entered college at State Polytechnic of Malang
           (Polinema) and had chosen Telecommunication Engineering as my major.
           Also, I got a scholarship in Cloud Computing degree from Indonesia's

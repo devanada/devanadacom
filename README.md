@@ -1,27 +1,48 @@
-# Next.js + Tailwind CSS Example
+# devanada.com
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.2)](https://tailwindcss.com/blog/tailwindcss-v3-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+This project is a personal website for Devanada. It is a static site built with Next.js and TailwindCSS. It is deployed on Vercel. The website is a single page application that uses the GitHub API to get pinned repositories and profile information.
 
-## Deploy your own
+## Documentation
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+[Deployment](https://devanada.com/)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+## Features
 
-## How to use
+- Get pinned repositories using GitHub API
+- Get profile information using GitHub API
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+## Tech Stack
+
+**Client:** Next.js, Axios, TailwindCSS, Moment.js, React-Icons
+
+## Run Locally
+
+Clone the project
 
 ```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
+  git clone https://github.com/devanada/devanadacom.git
 ```
+
+Go to the project directory
 
 ```bash
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
+  cd devanadacom
 ```
+
+Install dependencies
 
 ```bash
-pnpm create next-app --example with-tailwindcss with-tailwindcss-app
+  npm install
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+Start the server
+
+```bash
+  npm run dev
+```
+
+## Screenshots
+
+![App Screenshot #1](assets/picture1.png)
+
+![App Screenshot #2](assets/picture2.png)

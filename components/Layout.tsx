@@ -95,7 +95,7 @@ const Layout: FC<Props> = ({
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-      <header className="container sticky top-0 left-0 right-0 z-10 m-auto flex min-h-[4rem] items-center justify-between border-b border-b-dark-2 bg-dark p-2">
+      <header className="container sticky top-0 right-0 left-0 z-10 m-auto flex min-h-[4rem] items-center justify-between border-b border-b-dark-2 bg-dark p-2">
         <Link className="relative h-12 w-12" href="/">
           <Image
             className="rounded-full object-contain"

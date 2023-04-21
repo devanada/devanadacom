@@ -2,11 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-#__next {
-  margin: 0;
-  background-color: #18191a;
+body {
+  width: 100%;
+  min-width: 1280px;
   height: 100vh;
-  overflow: auto;
   display: flex;
   flex-direction: column;
 }
@@ -24,7 +23,7 @@
 
 ::-webkit-scrollbar-thumb {
   border-radius: 0.5rem;
-  background-color: #555;
+  background-color: #111111;
 }
 
 ::-webkit-scrollbar-thumb:hover {

@@ -1,3 +1,4 @@
+import { TooltipProvider } from "@/components/ui/tooltip";
 import Taskbar from "@/components/taskbar";
 import Providers from "@/utils/redux/provider";
 
@@ -13,10 +14,12 @@ export default function RootLayout({
       <head />
       <body>
         <Providers>
-          <main className="flex flex-1 flex-col overflow-hidden bg-[url(/background2.jpg)] bg-cover bg-center bg-no-repeat">
-            {children}
-          </main>
-          <Taskbar />
+          <TooltipProvider>
+            <main className="flex w-full grow flex-col overflow-hidden bg-[url(/background2.jpg)] bg-cover bg-center bg-no-repeat">
+              {children}
+            </main>
+            <Taskbar />
+          </TooltipProvider>
         </Providers>
       </body>
     </html>

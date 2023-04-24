@@ -1,11 +1,12 @@
-import { IconType } from "react-icons";
 import {
   SiPowershell,
   SiGooglechrome,
+  SiCounterstrike,
   SiVisualstudiocode,
-  SiCounterstrike
 } from "react-icons/si";
-import {GiDiabloSkull} from "react-icons/gi"
+import { GiDiabloSkull } from "react-icons/gi";
+import { ImFolderOpen } from "react-icons/im";
+import { IconType } from "react-icons";
 
 interface MenuType {
   [key: string]: IconType;
@@ -16,5 +17,6 @@ export const menu: MenuType = {
   vscode: SiVisualstudiocode,
   cmd: SiPowershell,
   cs: SiCounterstrike,
-  diablo: GiDiabloSkull
+  diablo: GiDiabloSkull,
+  folder: ImFolderOpen,
 };

@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { FrameType } from "@/utils/types/frame";
+import { FenceType } from "@/utils/types/fences";
 
 interface InitialType {
-  windows: FrameType[];
+  windows: FenceType[];
 }
 
 const initialState = {
@@ -15,7 +15,7 @@ export const slice = createSlice({
   initialState,
   reducers: {
     reset: () => initialState,
-    addWindow: (state, action: PayloadAction<FrameType>) => {
+    addWindow: (state, action: PayloadAction<FenceType>) => {
       state.windows.push(action.payload);
     },
     removeWindow: (state, action: PayloadAction<string>) => {

@@ -8,13 +8,14 @@ import {
   VscChromeClose as Close,
 } from "react-icons/vsc";
 import { Rnd } from "react-rnd";
+import clsx from "clsx";
 
 import { removeWindow } from "@/utils/redux/features/menuSlice";
 import { useAppDispatch } from "@/utils/redux/hooks";
-import { FrameType } from "@/utils/types/frame";
+import { FenceType } from "@/utils/types/fences";
 import { menu } from "@/utils/data";
 
-interface WindowProps extends FrameType {
+interface WindowProps extends FenceType {
   children: ReactNode;
 }
 
@@ -41,7 +42,7 @@ export default function Window(props: WindowProps) {
     setIsFullScreen(resize);
     setSize(
       resize
-        ? { x: 0, y: 0, width: "100%", height: "94%" }
+        ? { x: 0, y: 0, width: "100%", height: "100%" }
         : { x: 0, y: 0, width: 800, height: 600 }
     );
   };
@@ -83,7 +84,7 @@ export default function Window(props: WindowProps) {
         });
       }}
     >
-      <div className="flex h-8 w-full items-center justify-between bg-neutral-800 px-3">
+      <div className="sticky top-0 flex h-8 w-full items-center justify-between bg-black px-3">
         <div className="basis-1/3" />
         <p className="basis-1/3 text-center font-normal text-white">{title}</p>
         <div className="flex h-full basis-1/3 items-center justify-end gap-1">
@@ -114,7 +115,14 @@ export default function Window(props: WindowProps) {
           </div>
         </div>
       </div>
-      {children}
+      <div
+        className={clsx(
+          isFullScreen ? "h-[calc(100%-4.25rem)]" : "h-full",
+          "w-full"
+        )}
+      >
+        {children}
+      </div>
     </Rnd>
   );
 }

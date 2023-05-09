@@ -3,4 +3,5 @@ export interface FenceType {
   title: string;
   src: string | null;
   type: string;
+  url?: string;
 }

@@ -46,20 +46,20 @@ const folders: FenceType[] = [
   {
     id: "projects",
     title: "Projects",
-    src: null,
+    src: "https://api.github.com/users/devanada/starred?sort=updated",
     type: "folder",
   },
-  // {
-  //   id: "works",
-  //   title: "Works",
-  //   src: null,
-  //   type: "folder",
-  // },
+  {
+    id: "works",
+    title: "Works",
+    src: "https://cache.showwcase.com/user/devanada/experiences",
+    type: "folder",
+  },
 ];
 
 export default async function Page() {
   return (
-    <div className="flex h-full w-full flex-grow flex-col gap-3 overflow-hidden p-3">
+    <div className="flex flex-grow flex-col h-full w-full p-3 gap-3 overflow-hidden">
       <Fences title="Programs" datas={programs} />
       <Fences title="Folders" datas={folders} />
       <Frames />

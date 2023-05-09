@@ -63,7 +63,7 @@ export default function Window(props: WindowProps) {
   return (
     <Rnd
       id={id}
-      className="flex h-full w-full flex-col border border-black bg-neutral-800"
+      className="border border-black flex flex-col h-full bg-neutral-800 w-full"
       default={size}
       size={size}
       position={size}
@@ -84,18 +84,18 @@ export default function Window(props: WindowProps) {
         });
       }}
     >
-      <div className="sticky top-0 flex h-8 w-full items-center justify-between bg-black px-3">
+      <div className="bg-black flex h-8 w-full px-3 top-0 sticky items-center justify-between">
         <div className="basis-1/3" />
-        <p className="basis-1/3 text-center font-normal text-white">{title}</p>
-        <div className="flex h-full basis-1/3 items-center justify-end gap-1">
+        <p className="font-normal text-center text-white basis-1/3">{title}</p>
+        <div className="flex h-full gap-1 items-center justify-end basis-1/3">
           <div
-            className="flex h-full items-center px-3 hover:bg-neutral-600 active:bg-slate-800"
+            className="cursor-default flex h-full px-3 items-center hover:bg-neutral-600 active:bg-slate-800"
             onClick={handleClose}
           >
             <Minimize className="text-xl text-white" />
           </div>
           <div
-            className="flex h-full items-center px-3 hover:bg-neutral-600 active:bg-slate-800"
+            className="cursor-default flex h-full px-3 items-center hover:bg-neutral-600 active:bg-slate-800"
             onClick={() => {
               handleResize(isFullScreen ? false : true);
               handleZindex("10");
@@ -108,7 +108,7 @@ export default function Window(props: WindowProps) {
             )}
           </div>
           <div
-            className="flex h-full items-center px-3 hover:bg-neutral-600 active:bg-slate-800"
+            className="cursor-default flex h-full px-3 items-center hover:bg-neutral-600 active:bg-slate-800"
             onClick={handleClose}
           >
             <Close className="text-xl text-white" />

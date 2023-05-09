@@ -11,9 +11,9 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "avatars.githubusercontent.com",
+        hostname: "showwcase-companies-logos.s3-accelerate.amazonaws.com",
         port: "",
-        pathname: "/u/**",
+        pathname: "/*",
       },
     ],
   },

@@ -20,7 +20,7 @@ export default function Program(props: FenceType) {
       onDoubleClick={handleClick}
     >
       <Menu className="text-4xl text-white" />
-      <p className="select-none text-center text-white">{title}</p>
+      <p className="select-none text-center text-sm text-white">{title}</p>
     </div>
   );
 }

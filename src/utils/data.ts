@@ -4,6 +4,8 @@ import {
   SiCounterstrike,
   SiVisualstudiocode,
 } from "react-icons/si";
+import { FaUserCircle } from "react-icons/fa";
+import { VscFilePdf } from "react-icons/vsc";
 import { GiDiabloSkull } from "react-icons/gi";
 import { ImFolderOpen } from "react-icons/im";
 import { IconType } from "react-icons";
@@ -19,4 +21,6 @@ export const menu: MenuType = {
   cs: SiCounterstrike,
   diablo: GiDiabloSkull,
   folder: ImFolderOpen,
+  about: FaUserCircle,
+  resume: VscFilePdf,
 };

@@ -32,8 +32,8 @@ export default function Window(props: WindowProps) {
   const [size, setSize] = useState<SizeType>({
     x: 0,
     y: 0,
-    width: 800,
-    height: 600,
+    width: "50%",
+    height: "45%",
   });
   const dispatch = useAppDispatch();
   const menus = Object.keys(menu);
@@ -43,7 +43,7 @@ export default function Window(props: WindowProps) {
     setSize(
       resize
         ? { x: 0, y: 0, width: "100%", height: "100%" }
-        : { x: 0, y: 0, width: 800, height: 600 }
+        : { x: 0, y: 0, width: "50%", height: "45%" }
     );
   };
 
@@ -63,16 +63,18 @@ export default function Window(props: WindowProps) {
   return (
     <Rnd
       id={id}
-      className="border border-black flex flex-col h-full bg-neutral-800 w-full"
+      className="flex h-full w-full flex-col border border-black bg-neutral-800"
       default={size}
       size={size}
       position={size}
       minHeight={100}
       minWidth={100}
       enableResizing={!isFullScreen}
-      disableDragging={isFullScreen}
+      // disableDragging={isFullScreen}
+      disableDragging={true}
       bounds="parent"
       onMouseDown={() => handleZindex("")}
+      cancel="stop-drag"
       onDragStop={(e, d) => {
         setSize({ ...size, x: d.x, y: d.y });
       }}
@@ -84,18 +86,18 @@ export default function Window(props: WindowProps) {
         });
       }}
     >
-      <div className="bg-black flex h-8 w-full px-3 top-0 sticky items-center justify-between">
+      <div className="sticky top-0 flex h-8 w-full items-center justify-between bg-black px-3">
         <div className="basis-1/3" />
-        <p className="font-normal text-center text-white basis-1/3">{title}</p>
-        <div className="flex h-full gap-1 items-center justify-end basis-1/3">
+        <p className="basis-1/3 text-center font-normal text-white">{title}</p>
+        <div className="flex h-full basis-1/3 items-center justify-end gap-1">
           <div
-            className="cursor-default flex h-full px-3 items-center hover:bg-neutral-600 active:bg-slate-800"
+            className="flex h-full cursor-default items-center px-3 hover:bg-neutral-600 active:bg-slate-800"
             onClick={handleClose}
           >
             <Minimize className="text-xl text-white" />
           </div>
           <div
-            className="cursor-default flex h-full px-3 items-center hover:bg-neutral-600 active:bg-slate-800"
+            className="flex h-full cursor-default items-center px-3 hover:bg-neutral-600 active:bg-slate-800"
             onClick={() => {
               handleResize(isFullScreen ? false : true);
               handleZindex("10");
@@ -108,7 +110,7 @@ export default function Window(props: WindowProps) {
             )}
           </div>
           <div
-            className="cursor-default flex h-full px-3 items-center hover:bg-neutral-600 active:bg-slate-800"
+            className="flex h-full cursor-default items-center px-3 hover:bg-neutral-600 active:bg-slate-800"
             onClick={handleClose}
           >
             <Close className="text-xl text-white" />
@@ -117,8 +119,8 @@ export default function Window(props: WindowProps) {
       </div>
       <div
         className={clsx(
-          isFullScreen ? "h-[calc(100%-4.25rem)]" : "h-full",
-          "w-full"
+          isFullScreen ? "h-[calc(100%-4.25rem)]" : "h-[calc(100%-2rem)]",
+          "w-full overflow-auto"
         )}
       >
         {children}

@@ -9,13 +9,14 @@ import { FenceType } from "@/utils/types/fences";
 
 export default function Works(props: FenceType) {
   const { title, src, type } = props;
+
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
   const { data, error, isLoading } = useSWR(src, fetcher);
 
   return (
     <Window {...props}>
       {!isLoading && (
-        <div className="text-white grid grid-flow-row p-2 gap-3 grid-cols-6">
+        <div className="grid w-full grid-flow-row grid-cols-4 gap-3 p-2 text-white md:grid-cols-5 lg:grid-cols-6">
           {data.map((val: any) => (
             <a
               key={val.id}
@@ -23,15 +24,15 @@ export default function Works(props: FenceType) {
               target="_blank"
               href={val.company.url}
             >
-              <div className="cursor-pointer flex flex-col items-center hover:bg-white/20 active:bg-white/40">
+              <div className="flex cursor-pointer flex-col items-center hover:bg-white/20 active:bg-white/40">
                 <MdWork className="text-5xl" />
-                <p className="font-bold text-center text-white select-none">
+                <p className="select-none text-center font-bold text-white">
                   {val.companyName}
                 </p>
-                <p className="text-center text-sm text-white select-none">
+                <p className="select-none text-center text-sm text-white">
                   {val.title}
                 </p>
-                <p className="text-center text-sm text-white select-none">
+                <p className="select-none text-center text-sm text-white">
                   ({dayjs(val.startDate).format("MMM YYYY")}
                   {" - "}
                   {val.current

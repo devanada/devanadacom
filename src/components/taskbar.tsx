@@ -24,7 +24,7 @@ export default function Taskbar() {
       <div className="flex h-full gap-1">
         <Tooltip>
           <TooltipTrigger>
-            <div className="flex h-full w-full cursor-default items-center px-2 text-white hover:bg-slate-700 hover:text-blue-500 active:bg-slate-800">
+            <div className="flex h-full w-full cursor-default select-none items-center px-2 text-white hover:bg-slate-700 hover:text-blue-500 active:bg-slate-800">
               <SiWindows className="text-xl" />
             </div>
             <TooltipContent>
@@ -39,7 +39,7 @@ export default function Taskbar() {
           return (
             <Tooltip key={window.id}>
               <TooltipTrigger>
-                <div className="flex h-full w-full cursor-default items-center border-b-2 px-2 hover:bg-slate-700 active:bg-slate-800">
+                <div className="flex h-full w-full cursor-default select-none items-center border-b-2 px-2 hover:bg-slate-700 active:bg-slate-800">
                   <Menu className="text-xl text-white" />
                 </div>
                 <TooltipContent>
@@ -53,7 +53,7 @@ export default function Taskbar() {
       <Tooltip>
         <TooltipTrigger>
           <div className="flex h-full items-center px-2 hover:bg-slate-700 active:bg-slate-800">
-            <p className="cursor-default text-sm text-white">
+            <p className="cursor-default select-none text-sm text-white">
               {dayjs(timeNow).format("HH:mm")}
             </p>
           </div>

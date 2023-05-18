@@ -55,13 +55,25 @@ const folders: FenceType[] = [
     src: "https://cache.showwcase.com/user/devanada/experiences",
     type: "folder",
   },
+  {
+    id: "about",
+    title: "About Me",
+    src: "https://www.showwcase.com/devanada",
+    type: "program",
+  },
+  {
+    id: "resume",
+    title: "Resume",
+    src: "https://resume.showwcase.com/devanada/2714.pdf",
+    type: "program",
+  },
 ];
 
 export default async function Page() {
   return (
-    <div className="flex flex-grow flex-col h-full w-full p-3 gap-3 overflow-hidden">
+    <div className="flex h-full w-full flex-grow flex-col gap-3 overflow-hidden p-3">
       <Fences title="Programs" datas={programs} />
-      <Fences title="Folders" datas={folders} />
+      <Fences title="Other" datas={folders} />
       <Frames />
     </div>
   );

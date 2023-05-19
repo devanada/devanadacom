@@ -32,7 +32,7 @@ export default function Window(props: WindowProps) {
   const [size, setSize] = useState<SizeType>({
     x: 0,
     y: 0,
-    width: "50%",
+    width: "55%",
     height: "45%",
   });
   const dispatch = useAppDispatch();
@@ -43,7 +43,7 @@ export default function Window(props: WindowProps) {
     setSize(
       resize
         ? { x: 0, y: 0, width: "100%", height: "100%" }
-        : { x: 0, y: 0, width: "50%", height: "45%" }
+        : { x: 0, y: 0, width: "55%", height: "45%" }
     );
   };
 
@@ -67,14 +67,13 @@ export default function Window(props: WindowProps) {
       default={size}
       size={size}
       position={size}
-      minHeight={100}
-      minWidth={100}
+      minHeight={"50%"}
+      minWidth={"30%"}
       enableResizing={!isFullScreen}
-      // disableDragging={isFullScreen}
-      disableDragging={true}
+      disableDragging={isFullScreen}
+      dragHandleClassName="handle"
       bounds="parent"
       onMouseDown={() => handleZindex("")}
-      cancel="stop-drag"
       onDragStop={(e, d) => {
         setSize({ ...size, x: d.x, y: d.y });
       }}
@@ -87,8 +86,12 @@ export default function Window(props: WindowProps) {
       }}
     >
       <div className="sticky top-0 flex h-8 w-full items-center justify-between bg-black px-3">
-        <div className="basis-1/3" />
-        <p className="basis-1/3 text-center font-normal text-white">{title}</p>
+        <div className="handle flex basis-2/3 items-center">
+          <div className="h-1 basis-1/2 bg-transparent" />
+          <p className="basis-1/2 text-center font-normal text-white">
+            {title}
+          </p>
+        </div>
         <div className="flex h-full basis-1/3 items-center justify-end gap-1">
           <div
             className="flex h-full cursor-default items-center px-3 hover:bg-neutral-600 active:bg-slate-800"

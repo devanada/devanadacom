@@ -15,7 +15,7 @@ export default function RootLayout({
       <body>
         <Providers>
           <TooltipProvider>
-            <main className="flex w-full grow flex-col overflow-hidden bg-[url(/background2.jpg)] bg-cover bg-center bg-no-repeat">
+            <main className="main-container flex flex-col overflow-hidden bg-[url(/background2.jpg)] bg-cover bg-center bg-no-repeat">
               {children}
             </main>
             <Taskbar />

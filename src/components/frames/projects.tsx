@@ -1,20 +1,20 @@
 import { RiGitRepositoryFill } from "react-icons/ri";
-import React from "react";
 import useSWR from "swr";
 
+import Loading from "../loading";
 import Window from "../window";
 
 import { FenceType } from "@/utils/types/fences";
 
 export default function Projects(props: FenceType) {
-  const { title, src, type } = props;
+  const { src } = props;
 
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
   const { data, error, isLoading } = useSWR(src, fetcher);
 
   return (
     <Window {...props}>
-      {!isLoading && (
+      {!isLoading ? (
         <div className="grid w-full grid-flow-row grid-cols-3 gap-3 p-2 text-white md:grid-cols-5 lg:grid-cols-6">
           {data.map((val: any) => (
             <a
@@ -30,6 +30,10 @@ export default function Projects(props: FenceType) {
               </p>
             </a>
           ))}
+        </div>
+      ) : (
+        <div className="flex h-12 w-full items-center justify-center">
+          <Loading />
         </div>
       )}
     </Window>

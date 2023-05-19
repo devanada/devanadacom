@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import Fences from "@/components/fences";
 import Frames from "@/components/frame";
+
 import { FenceType } from "@/utils/types/fences";
 
 export const metadata: Metadata = {
@@ -64,7 +65,7 @@ const folders: FenceType[] = [
   {
     id: "resume",
     title: "Resume",
-    src: "https://resume.showwcase.com/devanada/2714.pdf",
+    src: "https://resume.showwcase.com/devanada.pdf",
     type: "program",
   },
 ];

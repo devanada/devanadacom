@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
-  reactStrictMode: false,
+const nextConfig = {
+  experimental: {
+    appDir: true,
+  },
   i18n: {
     locales: ["en"],
     defaultLocale: "en",
@@ -9,10 +11,12 @@ module.exports = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "avatars.githubusercontent.com",
+        hostname: "showwcase-companies-logos.s3-accelerate.amazonaws.com",
         port: "",
-        pathname: "/u/**",
+        pathname: "/*",
       },
     ],
   },
 };
+
+module.exports = nextConfig;

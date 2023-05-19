@@ -6,7 +6,7 @@ import { FenceType } from "@/utils/types/fences";
 import { menu } from "@/utils/data";
 
 export default function Program(props: FenceType) {
-  const { title, type } = props;
+  const { title, type, id } = props;
   const dispatch = useAppDispatch();
   const Menu = type === "program" ? menu[props.id] : menu["folder"];
 
@@ -16,6 +16,7 @@ export default function Program(props: FenceType) {
 
   return (
     <div
+      id={`shortcut-${id}`}
       className="flex cursor-pointer flex-col items-center hover:bg-white/20 active:bg-white/40"
       onDoubleClick={handleClick}
     >

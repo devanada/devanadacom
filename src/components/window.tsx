@@ -94,12 +94,14 @@ export default function Window(props: WindowProps) {
         </div>
         <div className="flex h-full basis-1/3 items-center justify-end gap-1">
           <div
+            id="action-minimize"
             className="flex h-full cursor-default items-center px-3 hover:bg-neutral-600 active:bg-slate-800"
             onClick={handleClose}
           >
             <Minimize className="text-xl text-white" />
           </div>
           <div
+            id="action-resize"
             className="flex h-full cursor-default items-center px-3 hover:bg-neutral-600 active:bg-slate-800"
             onClick={() => {
               handleResize(isFullScreen ? false : true);
@@ -113,6 +115,7 @@ export default function Window(props: WindowProps) {
             )}
           </div>
           <div
+            id="action-close"
             className="flex h-full cursor-default items-center px-3 hover:bg-neutral-600 active:bg-slate-800"
             onClick={handleClose}
           >

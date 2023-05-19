@@ -18,6 +18,7 @@ export default function Projects(props: FenceType) {
         <div className="grid w-full grid-flow-row grid-cols-3 gap-3 p-2 text-white md:grid-cols-5 lg:grid-cols-6">
           {data.map((val: any) => (
             <a
+              id={`shortcut-folder-${val.name}`}
               className="flex cursor-pointer flex-col items-center hover:bg-white/20 active:bg-white/40"
               key={val.id}
               rel="noreferrer"

@@ -20,6 +20,7 @@ export default function Works(props: FenceType) {
         <div className="grid w-full grid-flow-row grid-cols-3 gap-3 p-2 text-white md:grid-cols-5 lg:grid-cols-6">
           {data.map((val: any) => (
             <a
+              id={`shortcut-folder-${val.name}`}
               key={val.id}
               rel="noreferrer"
               target="_blank"

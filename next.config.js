@@ -1,8 +1,6 @@
+const million = require('million/compiler');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
   i18n: {
     locales: ["en"],
     defaultLocale: "en",
@@ -19,4 +17,6 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = million.next(
+  nextConfig, { auto: { rsc: true } }
+);

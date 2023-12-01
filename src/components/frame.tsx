@@ -17,7 +17,7 @@ export const folders: FolderType = {
   works: Works,
 };
 
-function Frame(props: FenceType) {
+function Frame(props: Readonly<FenceType>) {
   const { title, src, type, id } = props;
 
   if (type === "program") {

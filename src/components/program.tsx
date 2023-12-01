@@ -5,10 +5,11 @@ import { useAppDispatch } from "@/utils/redux/hooks";
 import { FenceType } from "@/utils/types/fences";
 import { menu } from "@/utils/data";
 
-export default function Program(props: FenceType) {
-  const { title, type, id } = props;
+export default function Program(props: Readonly<FenceType>) {
+  const { title, id } = props;
+
   const dispatch = useAppDispatch();
-  const Menu = type === "program" ? menu[props.id] : menu["folder"];
+  const Menu = menu[props.id];
 
   const handleClick = () => {
     dispatch(addWindow(props));

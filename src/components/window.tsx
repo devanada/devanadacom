@@ -26,7 +26,7 @@ interface SizeType {
   height: number | string;
 }
 
-export default function Window(props: WindowProps) {
+export default function Window(props: Readonly<WindowProps>) {
   const { id, title, children } = props;
   const [isFullScreen, setIsFullScreen] = useState<boolean>(false);
   const [size, setSize] = useState<SizeType>({
@@ -50,10 +50,10 @@ export default function Window(props: WindowProps) {
   const handleZindex = (zIndex: string) => {
     menus.forEach((menu) => {
       if (document.getElementById(menu)) {
-        document.getElementById(menu)!.style.zIndex = "0";
+        document.getElementById(menu)!.style.zIndex = "10";
       }
     });
-    document.getElementById(id)!.style.zIndex = zIndex !== "" ? zIndex : "10";
+    document.getElementById(id)!.style.zIndex = zIndex !== "" ? zIndex : "20";
   };
 
   const handleClose = () => {
@@ -63,7 +63,7 @@ export default function Window(props: WindowProps) {
   return (
     <Rnd
       id={id}
-      className="flex h-full w-full flex-col border border-black bg-neutral-800"
+      className="flex h-full w-full flex-col border border-black bg-neutral-800 z-10"
       default={size}
       size={size}
       position={size}
@@ -85,7 +85,7 @@ export default function Window(props: WindowProps) {
         });
       }}
     >
-      <div className="sticky top-0 flex h-8 w-full items-center justify-between bg-black px-3">
+      <div className="sticky top-0 flex h-8 w-full items-center justify-between bg-zinc-950 px-3">
         <div className="handle flex basis-2/3 items-center">
           <div className="h-1 basis-1/2 bg-transparent" />
           <p className="basis-1/2 text-center font-normal text-white">
@@ -105,7 +105,7 @@ export default function Window(props: WindowProps) {
             className="flex h-full cursor-default items-center px-3 hover:bg-neutral-600 active:bg-slate-800"
             onClick={() => {
               handleResize(isFullScreen ? false : true);
-              handleZindex("10");
+              handleZindex("20");
             }}
           >
             {isFullScreen ? (
@@ -123,12 +123,7 @@ export default function Window(props: WindowProps) {
           </div>
         </div>
       </div>
-      <div
-        className={clsx(
-          isFullScreen ? "h-[calc(100%-4.25rem)]" : "h-[calc(100%-2rem)]",
-          "w-full overflow-auto"
-        )}
-      >
+      <div className="w-full overflow-auto h-[calc(100%-2.25rem)]">
         {children}
       </div>
     </Rnd>

@@ -20,7 +20,8 @@ export const menu: MenuType = {
   cmd: SiPowershell,
   cs: SiCounterstrike,
   diablo: GiDiabloSkull,
-  folder: ImFolderOpen,
+  projects: ImFolderOpen,
+  works: ImFolderOpen,
   about: FaUserCircle,
   resume: VscFilePdf,
 };

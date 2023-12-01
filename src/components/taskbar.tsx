@@ -21,7 +21,7 @@ export default function Taskbar() {
   }, [timeNow]);
 
   return (
-    <div className="z-10 flex h-9 w-full justify-between bg-neutral-800">
+    <div className="z-10 flex h-9 w-full justify-between bg-zinc-950">
       <div className="flex h-full gap-1">
         <Tooltip>
           <TooltipTrigger id="taskbar-start" aria-label="Start">
@@ -34,8 +34,8 @@ export default function Taskbar() {
           </TooltipTrigger>
         </Tooltip>
         {windows.map((window) => {
-          const { type, title } = window;
-          const Menu = type === "program" ? menu[window.id] : menu["folder"];
+          const { title } = window;
+          const Menu = menu[window.id];
 
           return (
             <Tooltip key={window.id}>

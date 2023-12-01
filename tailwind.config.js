@@ -1,7 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
-  content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   theme: {
     container: {
       center: true,
@@ -11,9 +16,10 @@ module.exports = {
       },
     },
     extend: {
+      height: {
+        "screen-fit": "calc((var(--vh, 1vh) * 100) - 2.25rem)",
+      },
       colors: {
-        dark: "#18191a",
-        "dark-2": "#323333",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

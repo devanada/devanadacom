@@ -6,11 +6,12 @@ import dayjs from "dayjs";
 
 import { Tooltip, TooltipTrigger, TooltipContent } from "./ui/tooltip";
 
-import { useAppSelector } from "@/utils/redux/hooks";
-import { menu } from "@/utils/data";
+import useWindowsStore from "@/utils/states/windows";
+import { menu } from "@/utils/constants/constant";
 
 export default function Taskbar() {
-  const windows = useAppSelector((state) => state.menuReducer.windows);
+  const windows = useWindowsStore((state) => state.windows);
+
   const [timeNow, setTimeNow] = useState<string>(dayjs().format());
 
   useEffect(() => {

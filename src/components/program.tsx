@@ -1,18 +1,17 @@
 "use client";
 
-import { addWindow } from "@/utils/redux/features/menuSlice";
-import { useAppDispatch } from "@/utils/redux/hooks";
+import useWindowsStore from "@/utils/states/windows";
 import { FenceType } from "@/utils/types/fences";
-import { menu } from "@/utils/data";
+import { menu } from "@/utils/constants/constant";
 
 export default function Program(props: Readonly<FenceType>) {
   const { title, id } = props;
+  const addWindow = useWindowsStore((state) => state.addWindow);
 
-  const dispatch = useAppDispatch();
   const Menu = menu[props.id];
 
   const handleClick = () => {
-    dispatch(addWindow(props));
+    addWindow(props);
   };
 
   return (

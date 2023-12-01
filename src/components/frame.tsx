@@ -5,7 +5,7 @@ import { ElementType } from "react";
 import { Projects, Works } from "./frames";
 import Window from "./window";
 
-import { useAppSelector } from "@/utils/redux/hooks";
+import useWindowsStore from "@/utils/states/windows";
 import { FenceType } from "@/utils/types/fences";
 
 interface FolderType {
@@ -34,7 +34,7 @@ function Frame(props: Readonly<FenceType>) {
 }
 
 export default function Frames() {
-  const windows = useAppSelector((state) => state.menuReducer.windows);
+  const windows = useWindowsStore((state) => state.windows);
 
   return (
     <>

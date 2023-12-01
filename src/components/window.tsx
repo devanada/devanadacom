@@ -8,12 +8,10 @@ import {
   VscChromeClose as Close,
 } from "react-icons/vsc";
 import { Rnd } from "react-rnd";
-import clsx from "clsx";
 
-import { removeWindow } from "@/utils/redux/features/menuSlice";
-import { useAppDispatch } from "@/utils/redux/hooks";
+import useWindowsStore from "@/utils/states/windows";
 import { FenceType } from "@/utils/types/fences";
-import { menu } from "@/utils/data";
+import { menu } from "@/utils/constants/constant";
 
 interface WindowProps extends FenceType {
   children: ReactNode;
@@ -28,6 +26,8 @@ interface SizeType {
 
 export default function Window(props: Readonly<WindowProps>) {
   const { id, title, children } = props;
+  const { removeWindow } = useWindowsStore((state) => state);
+
   const [isFullScreen, setIsFullScreen] = useState<boolean>(false);
   const [size, setSize] = useState<SizeType>({
     x: 0,
@@ -35,7 +35,6 @@ export default function Window(props: Readonly<WindowProps>) {
     width: "55%",
     height: "45%",
   });
-  const dispatch = useAppDispatch();
   const menus = Object.keys(menu);
 
   const handleResize = (resize: boolean) => {
@@ -57,7 +56,7 @@ export default function Window(props: Readonly<WindowProps>) {
   };
 
   const handleClose = () => {
-    dispatch(removeWindow(props.id));
+    removeWindow(props);
   };
 
   return (

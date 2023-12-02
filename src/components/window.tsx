@@ -32,8 +32,8 @@ export default function Window(props: Readonly<WindowProps>) {
   const [size, setSize] = useState<SizeType>({
     x: 0,
     y: 0,
-    width: "55%",
-    height: "45%",
+    width: "75%",
+    height: "65%",
   });
   const menus = Object.keys(menu);
 
@@ -42,7 +42,7 @@ export default function Window(props: Readonly<WindowProps>) {
     setSize(
       resize
         ? { x: 0, y: 0, width: "100%", height: "100%" }
-        : { x: 0, y: 0, width: "55%", height: "45%" }
+        : { x: 0, y: 0, width: "75%", height: "65%" }
     );
   };
 
@@ -62,12 +62,12 @@ export default function Window(props: Readonly<WindowProps>) {
   return (
     <Rnd
       id={id}
-      className="flex h-full w-full flex-col border border-black bg-neutral-800 z-10"
+      className="flex h-full w-full flex-col border border-black bg-white dark:bg-neutral-800 z-10"
       default={size}
       size={size}
       position={size}
       minHeight={"50%"}
-      minWidth={"30%"}
+      minWidth={"45%"}
       enableResizing={!isFullScreen}
       disableDragging={isFullScreen}
       dragHandleClassName="handle"
@@ -84,20 +84,17 @@ export default function Window(props: Readonly<WindowProps>) {
         });
       }}
     >
-      <div className="sticky top-0 flex h-8 w-full items-center justify-between bg-zinc-950 px-3">
-        <div className="handle flex basis-2/3 items-center">
-          <div className="h-1 basis-1/2 bg-transparent" />
-          <p className="basis-1/2 text-center font-normal text-white">
-            {title}
-          </p>
+      <div className="sticky top-0 flex h-8 w-full items-center justify-between bg-white dark:bg-zinc-950 px-3">
+        <div className="handle flex flex-grow items-center">
+          <p className="font-normal text-zinc-950 dark:text-white">{title}</p>
         </div>
-        <div className="flex h-full basis-1/3 items-center justify-end gap-1">
+        <div className="flex h-full items-center justify-end gap-1">
           <div
             id="action-minimize"
             className="flex h-full cursor-default items-center px-3 hover:bg-neutral-600 active:bg-slate-800"
             onClick={handleClose}
           >
-            <Minimize className="text-xl text-white" />
+            <Minimize className="text-xl text-zinc-950 dark:text-white" />
           </div>
           <div
             id="action-resize"
@@ -108,9 +105,9 @@ export default function Window(props: Readonly<WindowProps>) {
             }}
           >
             {isFullScreen ? (
-              <Restore className="text-xl text-white" />
+              <Restore className="text-xl text-zinc-950 dark:text-white" />
             ) : (
-              <Maximize className="text-xl text-white" />
+              <Maximize className="text-xl text-zinc-950 dark:text-white" />
             )}
           </div>
           <div
@@ -118,7 +115,7 @@ export default function Window(props: Readonly<WindowProps>) {
             className="flex h-full cursor-default items-center px-3 hover:bg-neutral-600 active:bg-slate-800"
             onClick={handleClose}
           >
-            <Close className="text-xl text-white" />
+            <Close className="text-xl text-zinc-950 dark:text-white" />
           </div>
         </div>
       </div>

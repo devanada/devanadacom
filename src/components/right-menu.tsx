@@ -1,3 +1,5 @@
+"use client";
+
 import { ReactNode } from "react";
 
 import {
@@ -14,6 +16,9 @@ import {
   ContextMenuSubTrigger,
   ContextMenuTrigger,
 } from "@/components/ui/context-menu";
+import useWindowsStore from "@/utils/states/windows";
+import useThemeStore from "@/utils/states/theme";
+import useStore from "@/utils/states/store";
 
 interface Props {
   children?: ReactNode;
@@ -21,10 +26,15 @@ interface Props {
 
 export default function RightMenu(props: Readonly<Props>) {
   const { children } = props;
+  const addWindow = useWindowsStore((state) => state.addWindow);
+  const background = useStore(useThemeStore, (state) => state.background);
 
   return (
     <ContextMenu>
-      <ContextMenuTrigger className="h-full w-full overflow-hidden absolute z-0">
+      <ContextMenuTrigger
+        className="h-full w-full overflow-hidden absolute z-0 bg-cover bg-no-repeat bg-center"
+        style={{ backgroundImage: `url(${background})` }}
+      >
         {children}
       </ContextMenuTrigger>
       <ContextMenuContent className="w-64">
@@ -89,7 +99,19 @@ export default function RightMenu(props: Readonly<Props>) {
         </ContextMenuSub>
         <ContextMenuSeparator />
         <ContextMenuItem inset>Display settings</ContextMenuItem>
-        <ContextMenuItem inset>Personalise</ContextMenuItem>
+        <ContextMenuItem
+          inset
+          onClick={() =>
+            addWindow({
+              id: "personalize",
+              title: "Personalize",
+              src: "",
+              type: "folder",
+            })
+          }
+        >
+          Personalise
+        </ContextMenuItem>
       </ContextMenuContent>
     </ContextMenu>
   );

@@ -22,11 +22,11 @@ export default function Taskbar() {
   }, [timeNow]);
 
   return (
-    <div className="z-10 flex h-9 w-full justify-between bg-zinc-950">
+    <div className="z-10 flex h-9 w-full justify-between bg-white dark:bg-zinc-950">
       <div className="flex h-full gap-1">
         <Tooltip>
           <TooltipTrigger id="taskbar-start" aria-label="Start">
-            <div className="flex h-full w-full cursor-default select-none items-center px-2 text-white hover:bg-slate-700 hover:text-blue-500 active:bg-slate-800">
+            <div className="flex h-full w-full cursor-default select-none items-center px-2 text-zinc-950 dark:text-white hover:bg-slate-700 hover:text-blue-500 active:bg-slate-800">
               <SiWindows className="text-xl" />
             </div>
             <TooltipContent>
@@ -45,7 +45,7 @@ export default function Taskbar() {
                 aria-label={window.title}
               >
                 <div className="flex h-full w-full cursor-default select-none items-center border-b-2 px-2 hover:bg-slate-700 active:bg-slate-800">
-                  <Menu className="text-xl text-white" />
+                  <Menu className="text-xl text-zinc-950 dark:text-white" />
                 </div>
                 <TooltipContent>
                   <p>{title}</p>
@@ -58,7 +58,7 @@ export default function Taskbar() {
       <Tooltip>
         <TooltipTrigger id="taskbar-datetime" aria-label="Date Time">
           <div className="flex h-full items-center px-2 hover:bg-slate-700 active:bg-slate-800">
-            <p className="cursor-default select-none text-sm text-white">
+            <p className="cursor-default select-none text-sm text-zinc-950 dark:text-white">
               {dayjs(timeNow).format("HH:mm")}
             </p>
           </div>

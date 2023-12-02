@@ -20,11 +20,12 @@ export default function RootLayout(props: Readonly<Props>) {
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
-          enableSystem
           disableTransitionOnChange
         >
           <TooltipProvider>
-            <main className="h-screen w-full flex flex-col overflow-hidden bg-[url(/background/background2.jpg)] bg-cover bg-center bg-no-repeat relative">
+            <main
+              className={`h-screen w-full flex flex-col overflow-hidden relative`}
+            >
               {children}
               <Taskbar />
             </main>

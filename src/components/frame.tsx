@@ -2,7 +2,7 @@
 
 import { ElementType } from "react";
 
-import { Projects, Works } from "./frames";
+import { Projects, Works, Personalize } from "./frames";
 import Window from "./window";
 
 import useWindowsStore from "@/utils/states/windows";
@@ -15,6 +15,7 @@ interface FolderType {
 export const folders: FolderType = {
   projects: Projects,
   works: Works,
+  personalize: Personalize,
 };
 
 function Frame(props: Readonly<FenceType>) {

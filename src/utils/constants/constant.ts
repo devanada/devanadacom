@@ -7,10 +7,28 @@ import {
 import { GiDiabloSkull } from "react-icons/gi";
 import { ImFolderOpen } from "react-icons/im";
 import { FaUserCircle } from "react-icons/fa";
+import { FaGear } from "react-icons/fa6";
 import { VscFilePdf } from "react-icons/vsc";
 import { IconType } from "react-icons";
 
 import { FenceType } from "@/utils/types/fences";
+
+interface MenuType {
+  [key: string]: IconType;
+}
+
+export const menu: MenuType = {
+  chrome: SiGooglechrome,
+  vscode: SiVisualstudiocode,
+  cmd: SiPowershell,
+  cs: SiCounterstrike,
+  diablo: GiDiabloSkull,
+  projects: ImFolderOpen,
+  works: ImFolderOpen,
+  about: FaUserCircle,
+  resume: VscFilePdf,
+  personalize: FaGear,
+};
 
 export const programs: FenceType[] = [
   {
@@ -71,19 +89,3 @@ export const folders: FenceType[] = [
     type: "program",
   },
 ];
-
-interface MenuType {
-  [key: string]: IconType;
-}
-
-export const menu: MenuType = {
-  chrome: SiGooglechrome,
-  vscode: SiVisualstudiocode,
-  cmd: SiPowershell,
-  cs: SiCounterstrike,
-  diablo: GiDiabloSkull,
-  projects: ImFolderOpen,
-  works: ImFolderOpen,
-  about: FaUserCircle,
-  resume: VscFilePdf,
-};

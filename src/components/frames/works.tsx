@@ -17,7 +17,7 @@ export default function Works(props: FenceType) {
   return (
     <Window {...props}>
       {!isLoading ? (
-        <div className="grid w-full grid-flow-row grid-cols-3 gap-3 p-2 text-white md:grid-cols-5 lg:grid-cols-6">
+        <div className="grid w-full grid-flow-row grid-cols-3 gap-3 p-2 text-zinc-950 dark:text-white md:grid-cols-5 lg:grid-cols-6">
           {data.map((val: any) => (
             <a
               id={`shortcut-folder-${val.name}`}
@@ -28,13 +28,13 @@ export default function Works(props: FenceType) {
             >
               <div className="flex cursor-pointer flex-col items-center hover:bg-white/20 active:bg-white/40">
                 <MdWork className="text-5xl" />
-                <p className="select-none text-center font-bold text-white">
+                <p className="select-none text-center font-bold text-zinc-950 dark:text-white">
                   {val.companyName}
                 </p>
-                <p className="select-none text-center text-sm text-white">
+                <p className="select-none text-center text-sm text-zinc-950 dark:text-white">
                   {val.title}
                 </p>
-                <p className="select-none text-center text-sm text-white">
+                <p className="select-none text-center text-sm text-zinc-950 dark:text-white">
                   ({dayjs(val.startDate).format("MMM YYYY")}
                   {" - "}
                   {val.current

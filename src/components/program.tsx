@@ -20,8 +20,10 @@ export default function Program(props: Readonly<FenceType>) {
       className="flex cursor-pointer flex-col items-center hover:bg-white/20 active:bg-white/40"
       onDoubleClick={handleClick}
     >
-      <Menu className="text-4xl text-white" />
-      <p className="select-none text-center text-sm text-white">{title}</p>
+      <Menu className="text-4xl text-zinc-950 dark:text-white" />
+      <p className="select-none text-center text-sm text-zinc-950 dark:text-white">
+        {title}
+      </p>
     </div>
   );
 }

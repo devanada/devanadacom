@@ -15,7 +15,7 @@ export default function Projects(props: FenceType) {
   return (
     <Window {...props}>
       {!isLoading ? (
-        <div className="grid w-full grid-flow-row grid-cols-3 gap-3 p-2 text-white md:grid-cols-5 lg:grid-cols-6">
+        <div className="grid w-full grid-flow-row grid-cols-3 gap-3 p-2 text-zinc-950 dark:text-white md:grid-cols-5 lg:grid-cols-6">
           {data.map((val: any) => (
             <a
               id={`shortcut-folder-${val.name}`}
@@ -26,7 +26,7 @@ export default function Projects(props: FenceType) {
               href={val.html_url}
             >
               <RiGitRepositoryFill className="text-5xl" />
-              <p className="select-none text-center text-sm text-white">
+              <p className="select-none text-center text-sm text-zinc-950 dark:text-white">
                 {val.name}
               </p>
             </a>

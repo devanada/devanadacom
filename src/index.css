@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/earlyaccess/notosanstc.css");
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -40,7 +40,7 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --font-family-noto-sans: "Noto Sans", sans-serif;
+  --font-family-noto-sans: "Noto Sans TC", sans-serif;
   --gradient-start-menu: linear-gradient(
     to bottom,
     #1f2f86 0,
@@ -59,6 +59,40 @@
     #2158d4 92%,
     #1d4ec0 95%,
     #1941a5 98%
+  );
+  --gradient-header-start-menu: linear-gradient(
+    to bottom,
+    #1868ce 0%,
+    #0e60cb 12%,
+    #0e60cb 20%,
+    #1164cf 32%,
+    #1667cf 33%,
+    #1b6cd3 47%,
+    #1e70d9 54%,
+    #2476dc 60%,
+    #297ae0 65%,
+    #3482e3 77%,
+    #3786e5 79%,
+    #428ee9 90%,
+    #4791eb 100%
+  );
+  --gradient-footer-start-menu: linear-gradient(
+    to bottom,
+    #4282d6 0%,
+    #3b85e0 3%,
+    #418ae3 5%,
+    #418ae3 17%,
+    #3c87e2 21%,
+    #3786e4 26%,
+    #3482e3 29%,
+    #2e7ee1 39%,
+    #2374df 49%,
+    #2072db 57%,
+    #196edb 62%,
+    #176bd8 72%,
+    #1468d5 75%,
+    #1165d2 83%,
+    #0f61cb 88%
   );
   --gradient-sub-start-menu: linear-gradient(
     to bottom,
@@ -171,5 +205,11 @@
     background-image: var(--gradient-sub-start-menu);
     border-left: 1px solid #1042af;
     box-shadow: inset 1px 0 1px #18bbff;
+  }
+  .bg-header-start-menu-gradient {
+    background-image: var(--gradient-header-start-menu);
+  }
+  .bg-footer-start-menu-gradient {
+    background-image: var(--gradient-footer-start-menu);
   }
 }

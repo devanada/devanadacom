@@ -18,10 +18,10 @@ interface LayoutProps {
 const Layout = ({ children, windows, onWindowClick }: LayoutProps) => {
   return (
     <div className="w-full h-screen flex flex-col">
-      <div className="w-full grow flex flex-col bg-[url(https://i.imgur.com/Zk6TR5k.jpeg)] bg-cover bg-no-repeat bg-center">
+      <div className="w-full grow relative bg-[url(https://i.imgur.com/Zk6TR5k.jpeg)] bg-cover bg-no-repeat bg-center">
         <ContextMenu>
           <ContextMenuTrigger asChild>
-            <div className="relative w-full h-full">
+            <div className="absolute inset-0">
               {children}
             </div>
           </ContextMenuTrigger>

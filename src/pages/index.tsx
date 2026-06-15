@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { type ReactNode, useState } from "react";
+import { Code2, Crosshair, Skull, Terminal } from "lucide-react";
+
 import { Layout } from "@/components";
 import DesktopIcon from "@/components/desktop-icon";
 import XpWindow from "@/components/xp-window";
+import Projects from "@/components/frames/projects";
+import Works from "@/components/frames/works";
+import InternetExplorer from "@/components/frames/internet-explorer";
 
 interface WindowDef {
   id: string;
@@ -11,10 +16,39 @@ interface WindowDef {
 }
 
 const WINDOW_CONFIGS: Record<string, Omit<WindowDef, "minimized">> = {
-  "my-computer": { id: "my-computer", title: "My Computer", icon: "/assets/windows/icons/windows.png" },
-  "my-documents": { id: "my-documents", title: "My Documents", icon: "/assets/windows/icons/folder.png" },
-  "ie": { id: "ie", title: "Internet Explorer", icon: "/assets/windows/icons/ie.png" },
-  "recycle-bin": { id: "recycle-bin", title: "Recycle Bin", icon: "/assets/windows/icons/290.png" },
+  "my-computer":  { id: "my-computer",  title: "My Computer",       icon: "/assets/windows/icons/windows.png" },
+  "my-documents": { id: "my-documents", title: "My Documents",      icon: "/assets/windows/icons/folder.png"  },
+  "ie":           { id: "ie",           title: "Internet Explorer",  icon: "/assets/windows/icons/ie.png"      },
+  "recycle-bin":  { id: "recycle-bin",  title: "Recycle Bin",        icon: "/assets/windows/icons/290.png"     },
+  "projects":     { id: "projects",     title: "Projects",           icon: "/assets/windows/icons/folder.png"  },
+  "works":        { id: "works",        title: "Works",              icon: "/assets/windows/icons/folder.png"  },
+  "cs":           { id: "cs",           title: "Counter-Strike",     icon: "/assets/windows/icons/ie.png"      },
+  "diablo":       { id: "diablo",       title: "Diablo",             icon: "/assets/windows/icons/ie.png"      },
+  "vscode":       { id: "vscode",       title: "Visual Studio Code", icon: "/assets/windows/icons/ie.png"      },
+  "cmd":          { id: "cmd",          title: "Windows PowerShell", icon: "/assets/windows/icons/ie.png"      },
+};
+
+const DESKTOP_ICONS: { id: string; label: string; icon: string | ReactNode }[] = [
+  { id: "my-computer",  label: "My Computer",      icon: "/assets/windows/icons/windows.png" },
+  { id: "my-documents", label: "My Documents",     icon: "/assets/windows/icons/folder.png"  },
+  { id: "ie",           label: "Internet Explorer",icon: "/assets/windows/icons/ie.png"      },
+  { id: "recycle-bin",  label: "Recycle Bin",      icon: "/assets/windows/icons/290.png"     },
+  { id: "projects",     label: "Projects.exe",     icon: "/assets/windows/icons/folder.png"  },
+  { id: "works",        label: "Works.exe",        icon: "/assets/windows/icons/folder.png"  },
+  { id: "cs",           label: "Counter-Strike.exe", icon: <Crosshair className="w-10 h-10 text-orange-400" />  },
+  { id: "diablo",       label: "Diablo.exe",        icon: <Skull className="w-10 h-10 text-red-500" />          },
+  { id: "vscode",       label: "VS Code.exe",       icon: <Code2 className="w-10 h-10 text-blue-500" />         },
+  { id: "cmd",          label: "PowerShell.exe",    icon: <Terminal className="w-10 h-10 text-blue-300" />      },
+];
+
+const DEFAULT_SIZES: Record<string, { w: number; h: number }> = {
+  ie:       { w: 720, h: 520 },
+  projects: { w: 620, h: 440 },
+  works:    { w: 560, h: 420 },
+  cs:     { w: 680, h: 480 },
+  diablo: { w: 680, h: 520 },
+  vscode: { w: 760, h: 540 },
+  cmd:    { w: 640, h: 440 },
 };
 
 const Index = () => {
@@ -52,33 +86,24 @@ const Index = () => {
     <Layout windows={windows} onWindowClick={toggleMinimize}>
       {/* Desktop icons */}
       <div className="flex flex-col gap-3 p-3 items-start">
-        <DesktopIcon
-          icon="/assets/windows/icons/windows.png"
-          label="My Computer"
-          onDoubleClick={() => openWindow("my-computer")}
-        />
-        <DesktopIcon
-          icon="/assets/windows/icons/folder.png"
-          label="My Documents"
-          onDoubleClick={() => openWindow("my-documents")}
-        />
-        <DesktopIcon
-          icon="/assets/windows/icons/ie.png"
-          label="Internet Explorer"
-          onDoubleClick={() => openWindow("ie")}
-        />
-        <DesktopIcon
-          icon="/assets/windows/icons/290.png"
-          label="Recycle Bin"
-          onDoubleClick={() => openWindow("recycle-bin")}
-        />
+        {DESKTOP_ICONS.map((item) => (
+          <DesktopIcon
+            key={item.id}
+            icon={item.icon}
+            label={item.label}
+            onDoubleClick={() => openWindow(item.id)}
+          />
+        ))}
       </div>
 
       {/* Windows */}
       {windows.map((win, i) => {
-        const offsets = [120, 160, 140, 180];
-        const x = offsets[i % offsets.length];
-        const y = 60 + i * 20;
+        const sizes = DEFAULT_SIZES[win.id];
+        const w = sizes?.w ?? 480;
+        const h = sizes?.h ?? 360;
+        const x = 80 + (i % 4) * 30;
+        const y = 40 + (i % 4) * 24;
+
         return (
           <XpWindow
             key={win.id}
@@ -86,6 +111,8 @@ const Index = () => {
             icon={win.icon}
             defaultX={x}
             defaultY={y}
+            defaultWidth={w}
+            defaultHeight={h}
             minimized={win.minimized}
             zIndex={10 + windowOrder.indexOf(win.id)}
             onFocus={() => bringToFront(win.id)}
@@ -101,26 +128,51 @@ const Index = () => {
                 </div>
               </div>
             )}
+
             {win.id === "my-documents" && (
               <div className="p-4 text-sm text-gray-500 italic">This folder is empty.</div>
             )}
-            {win.id === "ie" && (
-              <div className="flex flex-col h-full">
-                <div className="flex items-center gap-1 px-2 py-1 bg-gray-100 border-b text-xs">
-                  <img src="/assets/windows/icons/back.png" alt="Back" className="w-4 h-4 opacity-50" />
-                  <img src="/assets/windows/icons/forward.png" alt="Forward" className="w-4 h-4 opacity-50" />
-                  <img src="/assets/windows/icons/refresh.png" alt="Refresh" className="w-4 h-4" />
-                  <img src="/assets/windows/icons/home.png" alt="Home" className="w-4 h-4" />
-                  <div className="flex-1 mx-2 bg-white border border-gray-400 px-2 py-0.5 text-xs">about:blank</div>
-                  <img src="/assets/windows/icons/ie.png" alt="Go" className="w-4 h-4" />
-                </div>
-                <div className="flex-1 bg-white flex items-center justify-center text-gray-400 text-sm">
-                  This page cannot be displayed
-                </div>
-              </div>
-            )}
+
+            {win.id === "ie" && <InternetExplorer />}
+
             {win.id === "recycle-bin" && (
               <div className="p-4 text-sm text-gray-500 italic">Recycle Bin is empty.</div>
+            )}
+
+            {win.id === "projects" && <Projects />}
+
+            {win.id === "works" && <Works />}
+
+            {win.id === "cs" && (
+              <iframe
+                src="https://play-cs.com/en/servers"
+                className="w-full h-full border-0"
+                title="Counter-Strike"
+              />
+            )}
+
+            {win.id === "diablo" && (
+              <iframe
+                src="https://d07riv.github.io/diabloweb"
+                className="w-full h-full border-0"
+                title="Diablo"
+              />
+            )}
+
+            {win.id === "vscode" && (
+              <iframe
+                src="https://github1s.com/devanada/devanadacom"
+                className="w-full h-full border-0"
+                title="Visual Studio Code"
+              />
+            )}
+
+            {win.id === "cmd" && (
+              <iframe
+                src="https://cmd.to"
+                className="w-full h-full border-0"
+                title="Windows PowerShell"
+              />
             )}
           </XpWindow>
         );

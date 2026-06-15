@@ -7,29 +7,29 @@ import {
   ContextMenuTrigger,
 } from "@/components/ui/context-menu";
 import { Separator } from "@/components/ui/separator";
-import Taskbar from "./taskbar";
+import Taskbar, { type TaskbarWindow } from "./taskbar";
 
 interface LayoutProps {
   children: ReactNode;
+  windows?: TaskbarWindow[];
+  onWindowClick?: (id: string) => void;
 }
 
-const Layout = ({ children }: LayoutProps) => {
+const Layout = ({ children, windows, onWindowClick }: LayoutProps) => {
   return (
     <div className="w-full h-screen flex flex-col">
-      <div className="w-full grow flex flex-col bg-[url(https://i.imgur.com/Zk6TR5k.jpeg)] bg-cover overflow-hidden bg-no-repeat bg-center">
+      <div className="w-full grow flex flex-col bg-[url(https://i.imgur.com/Zk6TR5k.jpeg)] bg-cover bg-no-repeat bg-center">
         <ContextMenu>
-          <ContextMenuTrigger className="w-full h-full">
-            {children}
+          <ContextMenuTrigger asChild>
+            <div className="relative w-full h-full">
+              {children}
+            </div>
           </ContextMenuTrigger>
           <ContextMenuContent className="rounded-none w-64">
             <ContextMenuItem>Refresh</ContextMenuItem>
             <Separator />
-            <ContextMenuItem disabled aria-disabled>
-              Paste
-            </ContextMenuItem>
-            <ContextMenuItem disabled aria-disabled>
-              Paste Shortcut
-            </ContextMenuItem>
+            <ContextMenuItem disabled aria-disabled>Paste</ContextMenuItem>
+            <ContextMenuItem disabled aria-disabled>Paste Shortcut</ContextMenuItem>
             <Separator />
             <ContextMenuItem>New</ContextMenuItem>
             <Separator />
@@ -37,7 +37,7 @@ const Layout = ({ children }: LayoutProps) => {
           </ContextMenuContent>
         </ContextMenu>
       </div>
-      <Taskbar />
+      <Taskbar windows={windows} onWindowClick={onWindowClick} />
     </div>
   );
 };

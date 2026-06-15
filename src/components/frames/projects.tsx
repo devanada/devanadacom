@@ -1,42 +1,47 @@
-import { RiGitRepositoryFill } from "react-icons/ri";
-import useSWR from "swr";
+import { useQuery } from "@tanstack/react-query";
+import { FolderGit2 } from "lucide-react";
 
-import Loading from "../loading";
-import Window from "../window";
+interface Repo {
+  id: number;
+  name: string;
+  html_url: string;
+}
 
-import { FenceType } from "@/utils/types/fences";
+const Projects = () => {
+  const { data, isLoading } = useQuery<Repo[]>({
+    queryKey: ["projects"],
+    queryFn: () =>
+      fetch("https://api.github.com/users/devanada/starred?sort=updated").then(
+        (r) => r.json()
+      ),
+  });
 
-export default function Projects(props: FenceType) {
-  const { src } = props;
-
-  const fetcher = (url: string) => fetch(url).then((res) => res.json());
-  const { data, error, isLoading } = useSWR(src, fetcher);
+  if (isLoading) {
+    return (
+      <div className="flex h-full w-full items-center justify-center text-gray-400 text-sm">
+        Loading...
+      </div>
+    );
+  }
 
   return (
-    <Window {...props}>
-      {!isLoading ? (
-        <div className="grid w-full grid-flow-row grid-cols-3 gap-3 p-2 text-zinc-950 dark:text-white md:grid-cols-5 lg:grid-cols-6">
-          {data.map((val: any) => (
-            <a
-              id={`shortcut-folder-${val.name}`}
-              className="flex cursor-pointer flex-col items-center hover:bg-white/20 active:bg-white/40"
-              key={val.id}
-              rel="noreferrer"
-              target="_blank"
-              href={val.html_url}
-            >
-              <RiGitRepositoryFill className="text-5xl" />
-              <p className="select-none text-center text-sm text-zinc-950 dark:text-white">
-                {val.name}
-              </p>
-            </a>
-          ))}
-        </div>
-      ) : (
-        <div className="flex h-12 w-full items-center justify-center">
-          <Loading />
-        </div>
-      )}
-    </Window>
+    <div className="grid grid-cols-4 gap-3 p-3 content-start">
+      {(data ?? []).map((repo) => (
+        <a
+          key={repo.id}
+          href={repo.html_url}
+          target="_blank"
+          rel="noreferrer"
+          className="flex flex-col items-center gap-1 p-1 hover:bg-blue-100 cursor-default rounded-sm"
+        >
+          <FolderGit2 className="w-10 h-10 text-yellow-500" />
+          <p className="text-xs text-center text-gray-800 break-all leading-tight">
+            {repo.name}
+          </p>
+        </a>
+      ))}
+    </div>
   );
-}
+};
+
+export default Projects;

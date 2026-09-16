@@ -16,39 +16,120 @@ interface WindowDef {
 }
 
 const WINDOW_CONFIGS: Record<string, Omit<WindowDef, "minimized">> = {
-  "my-computer":  { id: "my-computer",  title: "My Computer",       icon: "/assets/windows/icons/windows.png" },
-  "my-documents": { id: "my-documents", title: "My Documents",      icon: "/assets/windows/icons/folder.png"  },
-  "ie":           { id: "ie",           title: "Internet Explorer",  icon: "/assets/windows/icons/ie.png"      },
-  "recycle-bin":  { id: "recycle-bin",  title: "Recycle Bin",        icon: "/assets/windows/icons/290.png"     },
-  "projects":     { id: "projects",     title: "Projects",           icon: "/assets/windows/icons/folder.png"  },
-  "works":        { id: "works",        title: "Works",              icon: "/assets/windows/icons/folder.png"  },
-  "cs":           { id: "cs",           title: "Counter-Strike",     icon: "/assets/windows/icons/ie.png"      },
-  "diablo":       { id: "diablo",       title: "Diablo",             icon: "/assets/windows/icons/ie.png"      },
-  "vscode":       { id: "vscode",       title: "Visual Studio Code", icon: "/assets/windows/icons/ie.png"      },
-  "cmd":          { id: "cmd",          title: "Windows PowerShell", icon: "/assets/windows/icons/ie.png"      },
+  "my-computer": {
+    id: "my-computer",
+    title: "My Computer",
+    icon: "/assets/windows/icons/windows.png",
+  },
+  "my-documents": {
+    id: "my-documents",
+    title: "My Documents",
+    icon: "/assets/windows/icons/folder.png",
+  },
+  ie: {
+    id: "ie",
+    title: "Internet Explorer",
+    icon: "/assets/windows/icons/ie.png",
+  },
+  "recycle-bin": {
+    id: "recycle-bin",
+    title: "Recycle Bin",
+    icon: "/assets/windows/icons/290.png",
+  },
+  projects: {
+    id: "projects",
+    title: "Projects",
+    icon: "/assets/windows/icons/folder.png",
+  },
+  works: {
+    id: "works",
+    title: "Works",
+    icon: "/assets/windows/icons/folder.png",
+  },
+  cs: {
+    id: "cs",
+    title: "Counter-Strike",
+    icon: "/assets/windows/icons/ie.png",
+  },
+  diablo: {
+    id: "diablo",
+    title: "Diablo",
+    icon: "/assets/windows/icons/ie.png",
+  },
+  vscode: {
+    id: "vscode",
+    title: "Visual Studio Code",
+    icon: "/assets/windows/icons/ie.png",
+  },
+  cmd: {
+    id: "cmd",
+    title: "Windows PowerShell",
+    icon: "/assets/windows/icons/ie.png",
+  },
 };
 
-const DESKTOP_ICONS: { id: string; label: string; icon: string | ReactNode }[] = [
-  { id: "my-computer",  label: "My Computer",      icon: "/assets/windows/icons/windows.png" },
-  { id: "my-documents", label: "My Documents",     icon: "/assets/windows/icons/folder.png"  },
-  { id: "ie",           label: "Internet Explorer",icon: "/assets/windows/icons/ie.png"      },
-  { id: "recycle-bin",  label: "Recycle Bin",      icon: "/assets/windows/icons/290.png"     },
-  { id: "projects",     label: "Projects.exe",     icon: "/assets/windows/icons/folder.png"  },
-  { id: "works",        label: "Works.exe",        icon: "/assets/windows/icons/folder.png"  },
-  { id: "cs",           label: "Counter-Strike.exe", icon: <Crosshair className="w-10 h-10 text-orange-400" />  },
-  { id: "diablo",       label: "Diablo.exe",        icon: <Skull className="w-10 h-10 text-red-500" />          },
-  { id: "vscode",       label: "VS Code.exe",       icon: <Code2 className="w-10 h-10 text-blue-500" />         },
-  { id: "cmd",          label: "PowerShell.exe",    icon: <Terminal className="w-10 h-10 text-blue-300" />      },
-];
+const DESKTOP_ICONS: { id: string; label: string; icon: string | ReactNode }[] =
+  [
+    {
+      id: "my-computer",
+      label: "My Computer",
+      icon: "/assets/windows/icons/windows.png",
+    },
+    {
+      id: "my-documents",
+      label: "My Documents",
+      icon: "/assets/windows/icons/folder.png",
+    },
+    {
+      id: "ie",
+      label: "Internet Explorer",
+      icon: "/assets/windows/icons/ie.png",
+    },
+    {
+      id: "recycle-bin",
+      label: "Recycle Bin",
+      icon: "/assets/windows/icons/290.png",
+    },
+    {
+      id: "projects",
+      label: "Projects.exe",
+      icon: "/assets/windows/icons/folder.png",
+    },
+    // {
+    //   id: "works",
+    //   label: "Works.exe",
+    //   icon: "/assets/windows/icons/folder.png",
+    // },
+    {
+      id: "cs",
+      label: "Counter-Strike.exe",
+      icon: <Crosshair className="w-10 h-10 text-orange-400" />,
+    },
+    {
+      id: "diablo",
+      label: "Diablo.exe",
+      icon: <Skull className="w-10 h-10 text-red-500" />,
+    },
+    {
+      id: "vscode",
+      label: "VS Code.exe",
+      icon: <Code2 className="w-10 h-10 text-blue-500" />,
+    },
+    {
+      id: "cmd",
+      label: "PowerShell.exe",
+      icon: <Terminal className="w-10 h-10 text-blue-300" />,
+    },
+  ];
 
 const DEFAULT_SIZES: Record<string, { w: number; h: number }> = {
-  ie:       { w: 720, h: 520 },
+  ie: { w: 720, h: 520 },
   projects: { w: 620, h: 440 },
-  works:    { w: 560, h: 420 },
-  cs:     { w: 680, h: 480 },
+  works: { w: 560, h: 420 },
+  cs: { w: 680, h: 480 },
   diablo: { w: 680, h: 520 },
   vscode: { w: 760, h: 540 },
-  cmd:    { w: 640, h: 440 },
+  cmd: { w: 640, h: 440 },
 };
 
 const Index = () => {
@@ -63,7 +144,7 @@ const Index = () => {
     setWindows((prev) => {
       const existing = prev.find((w) => w.id === id);
       if (existing) {
-        return prev.map((w) => w.id === id ? { ...w, minimized: false } : w);
+        return prev.map((w) => (w.id === id ? { ...w, minimized: false } : w));
       }
       return [...prev, { ...WINDOW_CONFIGS[id], minimized: false }];
     });
@@ -77,7 +158,7 @@ const Index = () => {
 
   const toggleMinimize = (id: string) => {
     setWindows((prev) =>
-      prev.map((w) => w.id === id ? { ...w, minimized: !w.minimized } : w)
+      prev.map((w) => (w.id === id ? { ...w, minimized: !w.minimized } : w)),
     );
     bringToFront(id);
   };
@@ -123,20 +204,28 @@ const Index = () => {
               <div className="p-4 text-sm text-gray-700">
                 <p className="font-bold mb-2">Hard Disk Drives</p>
                 <div className="flex items-center gap-2 hover:bg-blue-100 p-1 cursor-default">
-                  <img src="/assets/windows/icons/288(32x32).png" alt="Drive" className="w-8 h-8" />
+                  <img
+                    src="/assets/windows/icons/288(32x32).png"
+                    alt="Drive"
+                    className="w-8 h-8"
+                  />
                   <span>Local Disk (C:)</span>
                 </div>
               </div>
             )}
 
             {win.id === "my-documents" && (
-              <div className="p-4 text-sm text-gray-500 italic">This folder is empty.</div>
+              <div className="p-4 text-sm text-gray-500 italic">
+                This folder is empty.
+              </div>
             )}
 
             {win.id === "ie" && <InternetExplorer />}
 
             {win.id === "recycle-bin" && (
-              <div className="p-4 text-sm text-gray-500 italic">Recycle Bin is empty.</div>
+              <div className="p-4 text-sm text-gray-500 italic">
+                Recycle Bin is empty.
+              </div>
             )}
 
             {win.id === "projects" && <Projects />}
